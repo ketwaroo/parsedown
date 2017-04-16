@@ -8,20 +8,22 @@ This is a work in progress.
 
 ## Special Attributes.
 
-[Special attributes](https://michelf.ca/projects/php-markdown/extra/#spe-attr) were not handled completely. Only id, class and spaces weren't allowed in attribute values.
+[Special attributes](https://michelf.ca/projects/php-markdown/extra/#spe-attr) were not handled completely. Only id, class were working. Everything else failed.
 
-Changed the way special attributes are handled
+Changed the way special attributes are handled. Extra attributes other than shorthand `#id` and `.class` should be written as `name="always quoted value whether or not there are spaces". 
+
+Example:
 
 ```html
-[test link](#anchorlink){#foo .bar .fubar target="_blank" data-cow-goes="moo"}
+[test link](#anchorlink){#foo .bar .fubar target="_blank" data-cow-goes="moo moo"}
 
 now converts to
 
-<a href="#anchorlink" id="foo" class="bar fubar" target="_blank" data-cow-goes="moo">test link</a>
+<a href="#anchorlink" id="foo" class="bar fubar" target="_blank" data-cow-goes="moo moo">test link</a>
 
 instead of failing to
 
-<a href="#anchorlink">test link</a>{#foo .bar .fubar target="_blank" data-cow-goes="moo"}
+<a href="#anchorlink">test link</a>{#foo .bar .fubar target="_blank" data-cow-goes="moo moo"}
 
 
 ```
