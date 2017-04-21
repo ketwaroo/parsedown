@@ -8,3 +8,9 @@ $pd = new Ketwaroo\Parsedown();
 var_dump($pd->parse('[test link](#anchorlink){#foo .bar .fubar target="_blank" data-cow-goes="moo"}'));
 var_dump($pd->parse('## test {#foo .bar .fubar target="_blank" stuff=" d \'d\' " data-cow-goes="moo"}'));
 var_dump($pd->parse('![Alt text](/path/to/img.jpg "Optional title"){#foo .bar .fubar target="_blank" data-cow-goes="moo"}'));
+var_dump($pd->parse('
+table | test {#fooTable .table .table-striped data-cat-goes="meow meow"}
+--- | --- 
+a1|a2 
+b1|b2 
+'));

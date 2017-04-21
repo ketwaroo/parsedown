@@ -91,4 +91,30 @@ class Parsedown extends \ParsedownExtra
         return $attrs;
     }
 
+    protected function blockTable($Line, array $Block = null)
+    {
+
+        $m     = array();
+        $attrs = '';
+        if (!empty($Block)
+            && isset($Block['identified'])
+            && isset($Block['element']['text'])
+            && preg_match('~[^\\\]\{(' . $this->regexAttribute . ')\}[ ]*$~', $Block['element']['text'], $m))
+        {
+            $attrs                    = $m[1];
+            $Block['element']['text'] = trim(str_replace($m[0], '', $Block['element']['text']));
+        }
+
+        $Block = parent::blockTable($Line, $Block);
+        if (!empty($attrs)
+            && !empty($Block)
+            && isset($Block['identified'])
+            && isset($Block['element']))
+        {
+            $Block['element']['attributes'] = $this->parseAttributeData($attrs);
+        }
+
+        return $Block;
+    }
+
 }

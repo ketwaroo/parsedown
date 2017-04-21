@@ -25,6 +25,50 @@ instead of failing to
 
 <a href="#anchorlink">test link</a>{#foo .bar .fubar target="_blank" data-cow-goes="moo moo"}
 
+```
+
+### Special Attributes on tables
+
+previously an unspported element for special attributes.
+
+```html
+
+table | test {#fooTable .table .table-striped data-cat-goes="meow meow"}
+--- | --- 
+a1|a2 
+b1|b2 
+
+now converts to
+
+<table id="fooTable" class="table table-striped" data-cat-goes="meow meow">
+<thead>
+<tr>
+<th>table</th>
+<th>test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a1</td>
+<td>a2</td>
+</tr>
+<tr>
+<td>b1</td>
+<td>b2</td>
+</tr>
+</tbody>
+</table>
+
+The special attrib tag must be on header row.
+
+Also produces same effect..
+
+| table | test |{#fooTable .table .table-striped data-cat-goes="meow meow"}
+| ----- | ---- |
+| a1    | a2   | 
+| b1    | b2   |
+
+TODO maybe add special attr per row.
 
 ```
 
