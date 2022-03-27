@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "erusev/parsedown-extra": "^0.7.1"
+        "erusev/parsedown-extra": "^1.7.4"
     },
     "require-dev": {
         "ketwaroo/debug-helper": "dev-master"
